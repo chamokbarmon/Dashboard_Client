@@ -3,7 +3,7 @@ import React from "react";
 import './Menubar.css'
 const MenuBar = () => {
   return (
-    <Navbar fluid rounded className="col ">
+    <Navbar fluid rounded className="col sticky top-0 ">
       <Navbar.Brand >
    
        
@@ -35,8 +35,8 @@ const MenuBar = () => {
         <Navbar.Toggle />
       </div>
       <Navbar.Collapse >
-        <Navbar.Link active href="#">
-          <p  className="text-white">Home</p>
+        <Navbar.Link active href="/">
+          <p className="text-white">Home</p>
         </Navbar.Link>
         <Navbar.Link   className="text-white" href="#">About</Navbar.Link>
         <Navbar.Link  className="text-white" href="#">Services</Navbar.Link>

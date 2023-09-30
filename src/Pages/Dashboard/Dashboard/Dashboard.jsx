@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
-
+import { Link } from "react-router-dom";
+import "./dashboard.css"
 const Dashboard = () => {
   const [products, setProducts] = useState();
  
@@ -20,10 +21,10 @@ const Dashboard = () => {
     });
 
   return (
-    <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-5">
+    <div className="grid  lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-5">
     {
       products?.data?.slice(1,20).map((pro)=>
-      <div class="max-w-sm bg-black border text-white border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+      <div class="max-w-sm  bg-black border text-white border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
         <a href="#">
           <img
             class="rounded-t-lg h-52"
@@ -33,16 +34,18 @@ const Dashboard = () => {
         </a>
         <div class="p-5">
           <a href="#">
-            <h5 class="mb-2 text-1xl font-bold tracking-tight text-white dark:text-white">
-              {pro?.title.slice(0,50)}...
+            <h5 class="mb-2 text-1xl font-bold tracking-tight text-white ">
+             Country : {pro?.country ? pro?.country : "India" }
+            </h5>
+            <h5 class="mb-2 text-1xl font-bold tracking-tight text-white ">
+               Topic :  {pro?.topic}
             </h5>
           </a>
           <p class="mb-3 font-normal text-white dark:text-gray-400">
-            Here are the biggest enterprise technology acquisitions of 2021 so
-            far, in reverse chronological order.
+          {pro?.title.slice(0,100)}...
           </p>
-          <a
-            href="#"
+          <Link
+            to={`/productDetails/${pro._id}`}
             class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
           >
             Read more
@@ -61,7 +64,7 @@ const Dashboard = () => {
                 d="M1 5h12m0 0L9 1m4 4L9 9"
               />
             </svg>
-          </a>
+          </Link>
         </div>
       </div>
       )  
