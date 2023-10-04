@@ -1,15 +1,16 @@
 import { Avatar, Dropdown, Navbar } from "flowbite-react";
 import React from "react";
-import './Menubar.css'
+import "./Menubar.css";
+import { Link } from "react-router-dom";
 const MenuBar = () => {
   return (
+    // Navbar Create .....
+
     <Navbar fluid rounded className="col sticky top-0 ">
-      <Navbar.Brand >
-   
-       
-      </Navbar.Brand>
+      <Navbar.Brand></Navbar.Brand>
       <div className="flex md:order-2 ">
         <Dropdown
+        className="col text-white"
           arrowIcon={false}
           inline
           label={
@@ -20,28 +21,41 @@ const MenuBar = () => {
             />
           }
         >
-          <Dropdown.Header>
-            <span className="block text-sm">Bonnie Green</span>
-            <span className="block truncate text-sm font-medium">
+          <Dropdown.Header >
+            <span className="block text-sm text-white">Bonnie Green</span>
+            <span className="block col truncate text-sm text-white font-medium">
               name@flowbite.com
             </span>
           </Dropdown.Header>
-          <li>Dashboard</li>
-          <li>Settings</li>
-          <li>Earnings</li>
+          <div className="text-center grid grid-cols-1 ">
+          <Link to="/" className="hover:bg-slate-50 hover:text-black hover:rounded-md  ">Dashboard</Link>
+         
+          <Link  className="hover:bg-slate-50 hover:text-black hover:rounded-md  ">SignIn</Link>
+          </div>
           <Dropdown.Divider />
-          <li>Sign out</li>
+           <button className=" w-full text-center hover:bg-slate-50 hover:text-black hover:rounded-md "> <Link  >Sign out</Link></button>
         </Dropdown>
         <Navbar.Toggle />
       </div>
-      <Navbar.Collapse >
+
+      {/*....... Navbar route........ */}
+
+      <Navbar.Collapse>
         <Navbar.Link active href="/">
-          <p className="text-white">Home</p>
+          <p className="text-white   hover:text-red-400 hover:rounded-md">Home</p>
         </Navbar.Link>
-        <Navbar.Link   className="text-white" href="#">About</Navbar.Link>
-        <Navbar.Link  className="text-white" href="#">Services</Navbar.Link>
-        <Navbar.Link  className="text-white" href="#">Pricing</Navbar.Link>
-        <Navbar.Link  className="text-white" href="#">Contact</Navbar.Link>
+        <Navbar.Link className="text-white" href="#">
+          About
+        </Navbar.Link>
+        <Navbar.Link className="text-white" href="#">
+          Services
+        </Navbar.Link>
+        <Navbar.Link className="text-white" href="#">
+          Pricing
+        </Navbar.Link>
+        <Navbar.Link className="text-white" href="#">
+          Contact
+        </Navbar.Link>
       </Navbar.Collapse>
     </Navbar>
   );

@@ -9,6 +9,7 @@ import Dashboard from "./Pages/Dashboard/Dashboard/Dashboard.jsx";
 import Chart from "./Pages/Dashboard/Chart/Chart.jsx";
 import DashboardDetails from "./Pages/Dashboard/Dashboard/DashboardDetails.jsx";
 
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -29,7 +30,8 @@ const router = createBrowserRouter([
       {
         path: "/productDetails/:productID",
         element: <DashboardDetails></DashboardDetails>,
-      },
+      }
+     
     ],
   },
 ]);

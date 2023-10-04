@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./Users.css";
 import axios from "axios";
-
+import "./Users.css"
 const Users = () => {
   const [product, setProduct] = useState([]);
 
@@ -10,58 +10,56 @@ const Users = () => {
 
   //   Make a GET request to the /product endpoint
   axios
-    .get(`http://localhost:5000/product`)
-    .then((response)=>{
+    .get(`https://dashboard-server-theta.vercel.app/product`)
+    .then((response) => {
       setProduct(response);
-    
     })
-    .catch((error)=>{
+    .catch((error) => {
       // Handle errors here
       console.error("Error:", error.message);
     });
   return (
-    <div>
-      <div class="relative overflow-x-auto shadow-md sm:rounded-lg width ">
+    <div >
+      <div class=" h-screen rounded-lg font-bold relative overflow-x-auto shadow-md sm:rounded-lg width ">
         <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-          <thead class="text-xs text-white uppercase width dark:bg-gray-700 dark:text-gray-400">
+          <thead class="text-xs sticky top-0 bg-cyan-800 text-white uppercase width dark:bg-gray-700 dark:text-gray-400">
             <tr>
               <th scope="col" class="px-6 py-3">
                 Product name
               </th>
               <th scope="col" class="px-6 py-3">
-                Color
+                Intensity
               </th>
               <th scope="col" class="px-6 py-3">
-                Category
+                Relevance
               </th>
               <th scope="col" class="px-6 py-3">
-                Price
+                Published
               </th>
               <th scope="col" class="px-6 py-3">
-                Action
+                Country
               </th>
             </tr>
           </thead>
           <tbody>
-            {product?.data?.map((pr)=>(
-              <tr class="bg-black border-b  text-white dark:bg-gray-900 dark:border-gray-700">
+            {product?.data?.map((pr) => (
+              <tr class=" border-b bg- rounded-b-lg  rounded-lg text-white dark:border-gray-700">
                 <th
                   scope="row"
                   class="px-6 py-4 font-medium  whitespace-nowrap dark:text-white"
                 >
                   {pr?.topic}
                 </th>
-                <td class="px-6 py-4">Silver</td>
-                <td class="px-6 py-4">Laptop</td>
-                <td class="px-6 py-4">$2999</td>
                 <td class="px-6 py-4">
-                  <a
-                    href="#"
-                    class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
-                  >
-                    Edit
-                  </a>
+                  {pr?.intensity ? pr?.intensity : "No Intensity"}
                 </td>
+                <td class="px-6 py-4">
+                  {pr?.relevance ? pr?.relevance : "Relevance"}
+                </td>
+                <td class="px-6 py-4">
+                  {pr?.published ? pr?.published : "Published"}
+                </td>
+                <td class="px-6 py-4">{pr?.country ? pr?.country : "India"}</td>
               </tr>
             ))}
           </tbody>

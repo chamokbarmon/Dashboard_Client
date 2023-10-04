@@ -19,7 +19,7 @@ const PieCharts = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/product")
+      .get("https://dashboard-server-theta.vercel.app/product")
       .then((res) => {
         const ChartData = res?.data?.map((data) => {
          

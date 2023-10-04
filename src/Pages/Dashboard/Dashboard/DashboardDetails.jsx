@@ -1,20 +1,34 @@
+// Import setup..............
+
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { Card } from "flowbite-react";
+
+// Import setup..............end
+
 const DashboardDetails = () => {
+  // state create .........
+
   const { productID } = useParams();
   const [product, setProduct] = useState({});
   console.log(product);
+
+  //   fetch  set up.............
+
   useEffect(() => {
     axios
-      .get("http://localhost:5000/productDetails/" + productID)
+      .get("https://dashboard-server-theta.vercel.app/productDetails/" + productID)
       .then((data) => {
         setProduct(data.data);
       });
   }, []);
 
+  //   fetch  set up.............End
+
   return (
+    // card set up ...........
+
     <Card style={{ backgroundColor: "#1e2c3e" }} className="">
       <div>
         <img className="h-96 w-full rounded-lg" src={product?.img} alt="" />
@@ -50,16 +64,15 @@ const DashboardDetails = () => {
           <div>
             <button className="btn w-24 mt-5 bg-sky-500 p-3 rounded-xl font-sans text-sm font-semibold">
               <Link className="font-bold italic " to="/">
-                {" "}
                 Back
               </Link>
             </button>
           </div>
-
           <div />
         </div>
       </div>
     </Card>
+    // card set up ...........End
   );
 };
 

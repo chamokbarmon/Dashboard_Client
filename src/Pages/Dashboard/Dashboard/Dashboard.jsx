@@ -7,7 +7,7 @@ const Dashboard = () => {
  
 
   axios
-    .get("http://localhost:5000/product")
+    .get("https://dashboard-server-theta.vercel.app/product")
     .then((res) => {
       if (res) {
         setProducts(res);
